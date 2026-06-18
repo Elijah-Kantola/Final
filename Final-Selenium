@@ -18,6 +18,8 @@ using System.Text;
             driver.FindElement(By.Id("txtPassword")).Clear();
             driver.FindElement(By.Id("txtPassword")).SendKeys("Test12456");
             driver.FindElement(By.Id("txtPassword")).SendKeys(Keys.Enter);
+            wait.Until(ExpectedConditions.UrlContains("dashboard/enrolled"));
+            Assert.IsTrue(driver.Url.Contains("dashboard/enrolled"));
         } 
     }
 
@@ -39,5 +41,8 @@ using System.Text;
             driver.FindElement(By.Id("txtPassword")).Clear();
             driver.FindElement(By.Id("txtPassword")).SendKeys("test1234");
             driver.FindElement(By.Id("txtPassword")).SendKeys(Keys.Enter);
+            wait.Until(ExpectedConditions.UrlContains("login"));
+            Assert.IsTrue(driver.Url.Contains("login"));
+            Assert.IsFalse(driver.Url.Contains("dashboard/enrolled"));
         }
     }
